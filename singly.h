@@ -1,8 +1,3 @@
-
-
-#include <stdio.h>
-#include <malloc.h>
-
 struct node
 {
   int info;
@@ -124,4 +119,33 @@ int search(struct node* head,int key)
   } while (temp!=NULL);
 
     return -1;
+}
+struct node *reverse(struct node *head)
+{
+   struct node *t1=NULL,*t2=NULL,*t3=NULL;
+   t1=head->next;
+
+   if (t1==NULL)
+   {
+    return NULL;
+   }
+   
+   t2=t1->next;
+   t3=t2->next;
+   t1->next=NULL;
+
+
+   while(t3!=NULL)
+   {
+    t2->next=t1;
+    t1=t2;
+    t2=t3;
+    t3=t3->next;
+    t2->next=t1;
+    head->next=t2;
+   
+   }
+
+    return head;
+
 }
